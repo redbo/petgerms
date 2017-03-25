@@ -69,6 +69,8 @@ func getTemp(path string, responses chan tempReading) {
 }
 
 func initLCD(devpath string) func(b byte, mode byte) {
+	// TODO: find official documentation for my LCD display's i2c backpack.  For now, this is derived from:
+	// http://www.raspberrypi-spy.co.uk/2015/05/using-an-i2c-enabled-lcd-screen-with-the-raspberry-pi/
 	dev := i2c.Devfs{Dev: devpath}
 	lcd, err := i2c.Open(&dev, 0x27)
 	if err != nil {
